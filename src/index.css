@@ -5,6 +5,11 @@
   box-sizing: border-box;
 }
 body {
+  background-image: url(./assets/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
   font-family: "Josefin Sans", sans-serif;
-  background-color: white;
 }

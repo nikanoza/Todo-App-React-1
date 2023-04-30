@@ -12,12 +12,115 @@
   --very-dark-grayish-blue-1: hsl(233, 14%, 35%);
   --very-dark-grayish-blue-2: hsl(237, 14%, 26%);
 }
-
-body {
+body.light-theme {
   background-image: url("./assets/bg-desktop-light.jpg");
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
+  background-color: #fafafa;
+  color: #333333;
+}
 
+body.dark-theme {
+  background-image: url("./assets/bg-desktop-dark.jpg");
+  background-color: #171823;
+  color: #ffffff;
+}
+body.dark-theme .todos_container {
+  background-color: #25273d;
+}
+body.dark-theme .input_container {
+  background-color: #25273d;
+}
+
+.todos {
+  width: 540px;
+  margin-top: 48px;
+}
+
+.todosHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  margin-bottom: 48px;
+}
+h1 {
+  font-size: 40px;
+  letter-spacing: 15px;
+  color: white;
+}
+.theme_img {
+  width: 26px;
+  height: 26px;
+}
+.input_container {
+  width: 540px;
+  height: 64px;
+  border-radius: 5px;
+  background-color: white;
+  padding-left: 24px;
+  display: flex;
+  align-items: center;
+
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+}
+form {
+  width: 100%;
+}
+.circle {
+  height: 24px;
+  width: 24px;
+  border: 1px solid #e3e4f1;
+  border-radius: 50%;
+  margin-right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input {
+  border: none;
+  width: 100%;
+  background: transparent;
+  height: 48px; /* Increase the height */
+}
+input,
+input::-webkit-input-placeholder {
+  font-size: 18px;
+}
+.todos_container {
+  border-radius: 5px;
+  box-shadow: 0px 35px 50px -15px rgba(194, 195, 214, 0.5);
+  width: 540px;
+  background-color: white;
+  margin-top: 24px;
+}
+.todo_item hr {
+  border: none;
+  border-bottom: 1px solid #e3e4f1;
+  margin: 0;
+}
+.todos_footer {
+  border-top: 1px solid #e3e4f1;
+  height: 50px;
+  padding-left: 24px;
+  padding-right: 24px;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #9495a5;
+}
+.types {
+  display: flex;
+  gap: 19px;
+}
+.completed {
+  text-decoration: line-through;
+}
+.completed-circle {
+  background-image: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+}
+.checkmark {
+  width: 8.7px;
+  height: 6px;
 }
