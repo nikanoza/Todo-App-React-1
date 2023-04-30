@@ -19,12 +19,9 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newTodo = inputRef.current.value.trim();
-
+  
     if (newTodo) {
-      setTodos((prevTodos) => [
-        ...prevTodos,
-        { text: newTodo, completed: false },
-      ]);
+      setTodos((prevTodos) => [      { text: newTodo, completed: false },      ...prevTodos,    ]);
       inputRef.current.value = '';
       inputRef.current.blur();
     }
