@@ -4,6 +4,7 @@ import './index.css';
 import Sun from './assets/icon-sun.svg';
 import Moon from './assets/icon-moon.svg';
 import Checkmark from './assets/icon-check.svg'
+import Cross from './assets/icon-cross.svg';
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -65,6 +66,9 @@ function App() {
   const handleClearCompleted = () => {
     setTodos(todos.filter(todo => !todo.completed));
   };
+  const handleDeleteTodo = (index) => {
+    setTodos((prevTodos) => prevTodos.filter((_, i) => i !== index));
+  };
 
   return (
     <div className="todos">
@@ -83,8 +87,12 @@ function App() {
             type="text"
             ref={inputRef}
             placeholder="Create a new todo.."
+            className="input"
+            onMouseEnter={() => inputRef.current.classList.add('input-hover')}
+            onMouseLeave={() => inputRef.current.classList.remove('input-hover')}
+    
           />
-          <button type="submit" hidden></button>
+       
         </form>
       </div>
 
@@ -92,13 +100,17 @@ function App() {
         {filteredTodos.map((todo, index) => (
           <div key={index} className="todo_item">
             <div className="input_container">
+              <div className='btnNtext' onClick={() => handleCircleClick(index)}>
               <div
                 className={`circle ${todo.completed ? 'completed-circle' : ''}`}
-                onClick={() => handleCircleClick(index)}
+                
               >
                 {todo.completed && <img src={Checkmark} alt="Checkmark" />}
               </div>
               <p className={todo.completed ? 'completed' : ''}>{todo.text}</p>
+              </div>
+              <img src={Cross} alt="Cross" className="cross" onClick={() => handleDeleteTodo(index)} />
+
             </div>
             <hr />
           </div>
