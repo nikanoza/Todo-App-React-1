@@ -26,6 +26,7 @@ function App() {
         { text: newTodo, completed: false },
       ]);
       inputRef.current.value = '';
+      inputRef.current.blur();
     }
   };
 
@@ -88,6 +89,8 @@ function App() {
             ref={inputRef}
             placeholder="Create a new todo.."
             className="input"
+            onFocus={() => inputRef.current.classList.add('input-focused')}
+            onBlur={() => inputRef.current.classList.remove('input-focused')}
             onMouseEnter={() => inputRef.current.classList.add('input-hover')}
             onMouseLeave={() => inputRef.current.classList.remove('input-hover')}
     
