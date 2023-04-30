@@ -7,6 +7,7 @@ import Checkmark from './assets/icon-check.svg'
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [filteredTodos, setFilteredTodos] = useState([]);
   const [isDarkTheme, setIsDarkTheme] = useState(false);
   const inputRef = useRef();
 
@@ -45,6 +46,26 @@ function App() {
     }
   }, [isDarkTheme]);
 
+  useEffect(() => {
+    setFilteredTodos(todos);
+  }, [todos]);
+
+  const handleAllClick = () => {
+    setFilteredTodos(todos);
+  };
+
+  const handleActiveClick = () => {
+    setFilteredTodos(todos.filter(todo => !todo.completed));
+  };
+
+  const handleCompletedClick = () => {
+    setFilteredTodos(todos.filter(todo => todo.completed));
+  };
+
+  const handleClearCompleted = () => {
+    setTodos(todos.filter(todo => !todo.completed));
+  };
+
   return (
     <div className="todos">
       <div className="todosHeader">
@@ -68,7 +89,7 @@ function App() {
       </div>
 
       <div className="todos_container">
-        {todos.map((todo, index) => (
+        {filteredTodos.map((todo, index) => (
           <div key={index} className="todo_item">
             <div className="input_container">
               <div
@@ -83,13 +104,14 @@ function App() {
           </div>
         ))}
         <div className="todos_footer">
-          <p>0 items left</p>
+          <p className='count'>{todos.filter(todo => !todo.completed).length} items left</p>
           <div className="types">
-            <p className="clear">All</p>
-            <p className="clear">Active</p>
-            <p className="clear">Completed</p>
+            <p  onClick={handleAllClick}>All</p>
+            <p  onClick={handleActiveClick}>Active</p>
+            <p  onClick={() => handleCompletedClick('completed')}>Completed</p>
+
           </div>
-          <p className="clear">Clear Completed</p>
+          <p className="clear" onClick={handleClearCompleted}>Clear Completed</p>
         </div>
       </div>
     </div>
