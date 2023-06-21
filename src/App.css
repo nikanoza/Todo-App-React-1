@@ -85,7 +85,7 @@ input {
   border: none;
   width: 100%;
   background: transparent;
-  height: 48px; /* Increase the height */
+  height: 48px;
 }
 input,
 input::-webkit-input-placeholder {
